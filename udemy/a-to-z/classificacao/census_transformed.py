@@ -94,6 +94,25 @@ x_census2 = scaler_x.fit_transform(x_census2)
 x_census2
 
 # %%
+from sklearn.model_selection import train_test_split
 
+# %%
+x_census_training, x_census_test, y_census_training, y_census_test = train_test_split(
+    x_census2, y_census2, test_size=0.15, random_state=0
+)
+# treinamento, teste, treinamento, teste, x,y
+
+# %%
+x_census_training.shape, y_census_training.shape
+
+# %%
+x_census_test.shape, y_census_test.shape
+
+# %%
+import pickle
+
+# %%
+with open('census.pkl', mode='wb') as f:
+    pickle.dump([x_census_training, y_census_training, x_census_test, y_census_test], f)
 
 
